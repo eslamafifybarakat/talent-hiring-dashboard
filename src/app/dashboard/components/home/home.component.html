@@ -1,0 +1,125 @@
+<div id="home">
+  <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+    <div>
+      <p class="text-capitalize text-main-color">{{'welcome.hi'|translate}} <span class="px-1">{{userName}}</span>,
+      </p>
+      <h2 class="fs-2 text-main-color fw-bold">{{'welcome.welcomeBack'|translate}}</h2>
+    </div>
+    <app-search></app-search>
+  </div>
+  <div class="row mt-3">
+    <div class="col-lg-3 col-md-6 mb-3">
+      <div class="global-card d-flex justify-content-between align-items-center flex-wrap gap-2 h-100">
+        <div>
+          <p class="text-muted-color fw-500">Total revenue</p>
+          <p class="fs-4 fw-bold text-main-color mb-0">$12345,33</p>
+        </div>
+        <div>
+          <i class="pi pi-chart-line fs-1 text-main-color"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 mb-3">
+      <div class="global-card d-flex justify-content-between align-items-center flex-wrap gap-2 h-100">
+        <div>
+          <p class="text-muted-color fw-500">Monthly revenue</p>
+          <p class="fs-4 fw-bold text-main-color mb-0">$12345,33</p>
+        </div>
+        <div>
+          <i class="pi pi-chart-bar fs-1 text-main-color"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 mb-3">
+      <div class="global-card d-flex justify-content-between align-items-center flex-wrap gap-2 h-100">
+        <div>
+          <p class="text-muted-color fw-500">Weekly revenue</p>
+          <p class="fs-4 fw-bold text-main-color mb-0">$12345,33</p>
+        </div>
+        <div>
+          <i class="pi pi-chart-pie fs-1 text-main-color"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 mb-3">
+      <div class="global-card d-flex justify-content-between align-items-center flex-wrap gap-2 h-100">
+        <div>
+          <p class="text-muted-color fw-500">Daily revenue</p>
+          <p class="fs-4 fw-bold text-main-color mb-0">$12345,33</p>
+        </div>
+        <div>
+          <i class="pi pi-chart-line fs-1 text-main-color"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-lg-8">
+      <div class="global-card">
+        <div class="d-flex align-items-center gap-5">
+          <h4 class="fw-bold fs-4 text-main-color">Users</h4>
+          <div>
+            <i class="fas fa-check-circle fs-5-1 text-success-color"></i>
+            <span class="text-success-color fw-500"> +6.7%</span>
+          </div>
+        </div>
+        <div class="row justify-content-center mt-4">
+          <div class="col-md-11">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="global-card d-flex align-items-end flex-wrap gap-4 h-100">
+                  <div>
+                    <p class="text-muted-color fw-500">Candidates</p>
+                    <p class="fs-4 fw-bold text-main-color mb-0">$12345,33</p>
+                  </div>
+                  <div>
+                    <span class="item-badge status-qualified rounded">+2.45%</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="global-card d-flex align-items-end flex-wrap gap-4 h-100">
+                  <div>
+                    <p class="text-muted-color fw-500">Candidates</p>
+                    <p class="fs-4 fw-bold text-main-color mb-0">$12345,33</p>
+                  </div>
+                  <div>
+                    <span class="item-badge status-unqualified rounded">+2.45%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p-chart type="line" [data]="chartData" [options]="chartOptions" [height]="'200px'"></p-chart>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="global-card">
+        <h4 class="fw-bold fs-4 text-main-color">New Users</h4>
+        <div class="mt-4">
+          <ng-container *ngFor="let item of users;let i=index">
+            <div class="d-flex align-items-center justify-content-between gap-2">
+              <div class="d-flex align-items-center gap-3">
+                <img src="assets/images/userprofile.jpg" alt="user" class="user rounded-circle">
+                <div>
+                  <h6 class="mb-1 text-main-color fw-bold">Ahmed Ali</h6>
+                  <p class="text-muted-color fw-500 fs-8">Today, 12:44</p>
+                </div>
+              </div>
+              <a>
+                <i class="pi pi-ellipsis-v text-main-color fs-5"></i>
+              </a>
+            </div>
+            <hr class="my-2" [class.d-none]="i>users?.length-2">
+          </ng-container>
+          <div class=" mt-4">
+            <p class="d-flex justify-content-center align-items-center gap-2 fw-bold text-main-color">
+              View all <i class="pi pi-arrow-right"></i>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
