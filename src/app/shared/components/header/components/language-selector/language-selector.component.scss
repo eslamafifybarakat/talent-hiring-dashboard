@@ -1,9 +1,10 @@
 .dropdown-language {
   .flag {
-    width: 30px;
-    height: 23px;
+    width: 40px;
+    height: 40px;
     object-fit: cover;
-    border-radius: 2px;
+    // border-radius: 2px;
+    border-radius: 50%;
     // border: 2px solid #fff;
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
   }
@@ -12,8 +13,9 @@
   }
   .dropdown-menu {
     .flag {
-      width: 23px;
-      height: 18px;
+      width: 30px;
+      height: 23px;
+      border-radius: 2px;
     }
   }
   .dropdown-toggle::after {

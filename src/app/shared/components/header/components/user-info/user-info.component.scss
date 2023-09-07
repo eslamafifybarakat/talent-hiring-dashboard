@@ -1,7 +1,7 @@
 .user-info {
   .user-img-parent {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 50px;
+    height: 50px;
     .user-img {
       border: 2px solid var(--text-white-color);
     }
@@ -16,5 +16,8 @@
   }
   .fa-circle {
     font-size: 10px;
+  }
+  .dropdown-toggle:after {
+    display: block !important;
   }
 }

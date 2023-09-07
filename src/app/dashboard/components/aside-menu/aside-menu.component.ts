@@ -44,12 +44,14 @@ export class AsideMenuComponent implements OnInit {
         id: 'candidates',
         text: this.publicService.translateTextFromJson('dashboard.sideMenu.candidates'),
         icon: 'pi pi-users',
+        routerLink: '/candidates',
         state: false,
       },
       {
         id: 'companies',
         text: this.publicService.translateTextFromJson('dashboard.sideMenu.companies'),
         icon: 'pi pi-building',
+        routerLink: '/companies',
         state: false,
       },
       {

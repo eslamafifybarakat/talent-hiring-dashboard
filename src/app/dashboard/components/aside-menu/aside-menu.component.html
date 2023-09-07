@@ -83,7 +83,15 @@
         </li>
       </ng-template>
     </ng-container>
+
   </ul>
+  <div class="logOut text-white-color w-100 d-flex justify-content-center align-items-center gap-3">
+    <i class="pi pi-sign-in fs-5 scaleX-rtl"></i>
+    <ng-container *ngIf="collapsed">
+      Log Out
+    </ng-container>
+
+  </div>
 </aside>
 
-<p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>
+<p-confirmDialog [style]=" { width: '450px' }"></p-confirmDialog>

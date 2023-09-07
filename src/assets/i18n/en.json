@@ -318,6 +318,9 @@
   "dashboard": {
     "total": "total",
     "tableHeader": {
+      "full_name":"Full Name",
+      "startDate":"Start Date",
+      "role":"role",
       "permissions": "Permissions",
       "username": "Username",
       "id": "Id",
@@ -448,6 +451,10 @@
     "companiesSubscriptions":"Companies Subscriptions",
     "checkPlan":"Check our Default Plans",
     "changeSubscription":"You can change the subscription plans form this panel , each plan is a 100% customisable."
+  },
+  "candidates":{
+    "employees":"Employees",
+    "currentEmployees":"Current employees"
   },
   "welcome": {
     "pageIsDesigned": "This page is designed to give some important information about the website. Let's make someting together!",

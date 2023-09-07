@@ -1,7 +1,8 @@
 <span class="p-input-icon-right">
   <span class="p-input-icon-left ml-auto">
     <i class="pi pi-search"></i>
-    <input pInputText class="search-input" type="text" #search placeholder="{{'placeholder.search'|translate}}" />
+    <input pInputText class="search-input w-sm-100" type="text" #search
+      placeholder="{{'placeholder.search'|translate}}" />
   </span>
   <ng-container *ngIf="search.value && !isLoadingSearch">
     <i (click)="clearSearchValue(search)" class="pi pi-times text-danger pointer"></i>

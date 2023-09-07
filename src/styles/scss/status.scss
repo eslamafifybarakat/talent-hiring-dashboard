@@ -11,10 +11,10 @@
   color: #50cd89;
   background-color: #e8fff3;
 }
-.status-proposal {
-  color: #fdc604;
-  background-color: #fff8df;
-}
+// .status-pending {
+//   color: #fdc604;
+//   background-color: #fff8df;
+// }
 .status-unqualified {
   color: #f1416c;
   background-color: #fff5f8;
@@ -27,4 +27,21 @@
   color: #743aef;
   background-color: #f1eef9;
 }
-
+.status-active {
+  color: #fff;
+  background-color: #73e473;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+.status-pending {
+  color: #fff;
+  background-color: #ffd96c;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+.status-leave {
+  color: #fff;
+  background-color: #df2a1f;
+  padding: 10px 20px;
+  border-radius: 20px;
+}

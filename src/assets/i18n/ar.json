@@ -317,6 +317,9 @@
   "dashboard": {
     "total": "المجموع",
     "tableHeader": {
+      "full_name":"الاسم بالكامل",
+      "startDate":"تاريخ البدء",
+      "role":"الدور",
       "permissions": "صلاحيات",
       "username": "اسم المستخدم",
       "id": "الرقم التعريفي",
@@ -361,6 +364,8 @@
     "sideMenu": {
       "dashboard": "لوحة التحكم",
       "usersManagement": "إدارة المستخدمين",
+    "candidates":"مرشحين",
+"companies":"شركات",
       "usersManagementChild": {
         "users": " المستخدمين",
         "rolesManagement": "إدارة الأدوار"
@@ -443,6 +448,10 @@
     "companiesSubscriptions":"اشتراكات الشركات",
     "checkPlan":"تحقق من خططنا الافتراضية",
     "changeSubscription":"يمكنك تغيير خطط الاشتراك من هذه اللوحة، كل خطة قابلة للتخصيص بنسبة 100%."
+  },
+  "candidates":{
+    "employees":"الموظفين",
+    "currentEmployees":"الموظفين الحاليين"
   },
   "welcome": {
     "pageIsDesigned": "تم تصميم هذه الصفحة لإعطاء بعض المعلومات الهامة حول الموقع. دعونا نجعل بعض الوقت معا!",

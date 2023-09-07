@@ -50,6 +50,9 @@ export class DynamicTableComponent implements OnInit {
   @Input() showDetails: boolean = false;
   @Input() showDelete: boolean = false;
   @Input() showEdit: boolean = false;
+  @Input() showCaption: boolean = false;
+  @Input() showImg: boolean = false;
+  @Input() showPaginator: boolean = false;
   @Input() showCopyAction: boolean = false;
   @Input() showResetPassword: boolean = false;
   @Input() showActionInMenu: boolean = false;

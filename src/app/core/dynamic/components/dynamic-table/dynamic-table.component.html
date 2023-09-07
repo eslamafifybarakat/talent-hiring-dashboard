@@ -1,124 +1,126 @@
 <div id="dynamic-global-data-table">
   <div class="table-content">
+    <!-- [rowsPerPageOptions]="rowsPerPageOptions"  -->
     <p-table #dt1 [value]="tableData" (onFilter)="customFilter($event,dt1)" [(selection)]="selectedItems"
-      [columns]="selectedColumns" responsiveLayout="scroll" [rowHover]="false" [resizableColumns]="true"
-      [customSort]="true" (onSort)="customSort($event)" dataKey="id">
-      <ng-template pTemplate="caption">
-        <div class="caption d-flex justify-content-between align-items-center flex-wrap gap-3">
-          <!-- <div class="d-flex align-items-center gap-3 dropdown-arrow">
+      [paginator]="showPaginator" [rows]="paginatorRows" [columns]="selectedColumns" responsiveLayout="scroll"
+      [rowHover]="true" [resizableColumns]="true" [customSort]="true" (onSort)="customSort($event)" dataKey="id">
+      <ng-container *ngIf="showCaption">
+        <ng-template pTemplate="caption">
+          <div class="caption d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <!-- <div class="d-flex align-items-center gap-3 dropdown-arrow">
             <p-dropdown #dropdown [options]="rowsPerPageOptions" (onChange)="paginatorOption($event)"
               (onHide)="hide()"></p-dropdown>
           </div> -->
-          <ng-container *ngIf="showSearch">
-            <span class="p-input-icon-right">
-              <span class="p-input-icon-left ml-auto">
-                <i class="pi pi-search"></i>
-                <input pInputText class="search-input" type="text" #search
-                  (keyup.enter)="searchHandlerEmit(search?.value)" placeholder="{{'placeholder.search'|translate}}" />
+            <ng-container *ngIf="showSearch">
+              <span class="p-input-icon-right">
+                <span class="p-input-icon-left ml-auto">
+                  <i class="pi pi-search"></i>
+                  <input pInputText class="search-input" type="text" #search
+                    (keyup.enter)="searchHandlerEmit(search?.value)" placeholder="{{'placeholder.search'|translate}}" />
+                </span>
+                <ng-container *ngIf="search.value && !isLoadingSearch">
+                  <i (click)="clearSearchValue(search)" class="pi pi-times text-danger cursor-pointer"></i>
+                </ng-container>
+                <ng-container *ngIf="isLoadingSearch">
+                  <i class="pi pi-spin pi-spinner"></i>
+                </ng-container>
               </span>
-              <ng-container *ngIf="search.value && !isLoadingSearch">
-                <i (click)="clearSearchValue(search)" class="pi pi-times text-danger cursor-pointer"></i>
-              </ng-container>
-              <ng-container *ngIf="isLoadingSearch">
-                <i class="pi pi-spin pi-spinner"></i>
-              </ng-container>
-            </span>
-          </ng-container>
-
-          <div class="d-flex align-items-center gap-3">
-
-            <ng-container *ngIf="enableArticleNoteStatusButton">
-              <div class="dropdown">
-                <button data-bs-toggle="dropdown" aria-expanded="false" pButton
-                  class="p-button-outlined p-button-secondary clear px-2 fw-bold">
-                  <i class="pi pi-arrow-right-arrow-left"></i>
-                  <span class="lh-0 ps-1">
-                    {{'general.changeStatus'|translate}}
-                  </span>
-                </button>
-                <ul class="dropdown-menu border-0 p-3">
-                  <ng-container *ngFor="let item of articleStatusList">
-                    <li><a class="dropdown-item d-flex gap-1" (click)="itemChangeStatusActionEmitter(item)">
-                        {{item?.name}}
-                      </a>
-                    </li>
-                  </ng-container>
-
-                </ul>
-              </div>
             </ng-container>
-            <ng-container *ngIf="enableAssignToButton">
-              <div class="dropdown" (clickOutside)="collapseAssignMenu == true ? collapseAssignMenu = false :''">
-                <button [attr.aria-expanded]="!collapseAssignMenu" (click)="collapseAssignMenu = !collapseAssignMenu;"
-                  pButton class="p-button-outlined p-button-secondary clear px-2 fw-bold">
-                  <i class="pi pi-arrow-right scaleX-rtl"></i>
-                  <span class="lh-0 ps-1">
-                    {{'labels.assignTo'|translate}}
-                  </span>
-                </button>
-                <ul class="dropdown-menu border-0 pt-0" [class.show]="collapseAssignMenu">
-                  <div class="assignUserMenuSearch">
-                    <span class="p-input-icon-right w-100 p-3 ">
-                      <span class="p-input-icon-left ml-auto w-100">
-                        <i class="pi pi-search"></i>
-                        <input pInputText class="search-input" type="text" #search (keyup)="filterUsers(search?.value)"
-                          placeholder="{{'placeholder.searchUser'|translate}}" />
-                      </span>
-                      <ng-container *ngIf="search.value">
-                        <i (click)="clearSearchUserValue(search);collapseAssignMenu=true"
-                          class="pi pi-times text-danger cursor-pointer mx-3"></i>
-                      </ng-container>
+
+            <div class="d-flex align-items-center gap-3">
+
+              <ng-container *ngIf="enableArticleNoteStatusButton">
+                <div class="dropdown">
+                  <button data-bs-toggle="dropdown" aria-expanded="false" pButton
+                    class="p-button-outlined p-button-secondary clear px-2 fw-bold">
+                    <i class="pi pi-arrow-right-arrow-left"></i>
+                    <span class="lh-0 ps-1">
+                      {{'general.changeStatus'|translate}}
                     </span>
-                    <hr class="m-0">
-                  </div>
-                  <div class="p-3 assignUserMenu">
-                    <ng-container *ngFor="let item of newAssignedUsers">
-                      <li><a class="dropdown-item d-flex gap-1" (click)="itemAssignUserActionEmitter(item)">
+                  </button>
+                  <ul class="dropdown-menu border-0 p-3">
+                    <ng-container *ngFor="let item of articleStatusList">
+                      <li><a class="dropdown-item d-flex gap-1" (click)="itemChangeStatusActionEmitter(item)">
                           {{item?.name}}
                         </a>
                       </li>
                     </ng-container>
 
-                  </div>
-                </ul>
-              </div>
-            </ng-container>
-
-
-
-            <ng-container *ngIf="enableAddNewQuestion">
-              <div class="dropdown">
-                <button data-bs-toggle="dropdown" aria-expanded="false" pButton
-                  label="{{'dashboard.usersList.addNewQuestion'|translate}}"
-                  class="p-button-outlined p-button-secondary clear">
-                </button>
-                <ul class="dropdown-menu border-0 p-3">
-                  <ng-container *ngFor="let item of newQuestionList">
-                    <li><a class="dropdown-item d-flex gap-1">
-                        {{item?.name}}
-                      </a>
-                    </li>
-                  </ng-container>
-
-                </ul>
-              </div>
-            </ng-container>
-            <ng-container *ngIf="enableDeleteButton">
-              <button (click)="deleteSelectedItems()" [disabled]="!selectedItems || !selectedItems?.length"
-                class="btn btn-danger clear">{{'general.delete'|translate}}</button>
-            </ng-container>
-            <div class="d-flex flex-wrap align-items-center gap-3">
-              <ng-container *ngIf="showClear">
-                <button pButton label="
-                  {{'general.reset'|translate}}" class="p-button-outlined p-button-secondary clear"
-                  icon="pi pi-refresh" (click)="clear(dt1)">
-                </button>
+                  </ul>
+                </div>
               </ng-container>
-              <div class="d-flex align-items-center gap-3 dropdown-arrow">
-                <p-dropdown #dropdown [options]="rowsPerPageOptions" (onChange)="paginatorOption($event)"
-                  (onHide)="hide()"></p-dropdown>
-              </div>
-              <!-- <p-multiSelect #colVisible [(ngModel)]="selectedColumns" [options]="tableHeaders" optionLabel="header"
+              <ng-container *ngIf="enableAssignToButton">
+                <div class="dropdown" (clickOutside)="collapseAssignMenu == true ? collapseAssignMenu = false :''">
+                  <button [attr.aria-expanded]="!collapseAssignMenu" (click)="collapseAssignMenu = !collapseAssignMenu;"
+                    pButton class="p-button-outlined p-button-secondary clear px-2 fw-bold">
+                    <i class="pi pi-arrow-right scaleX-rtl"></i>
+                    <span class="lh-0 ps-1">
+                      {{'labels.assignTo'|translate}}
+                    </span>
+                  </button>
+                  <ul class="dropdown-menu border-0 pt-0" [class.show]="collapseAssignMenu">
+                    <div class="assignUserMenuSearch">
+                      <span class="p-input-icon-right w-100 p-3 ">
+                        <span class="p-input-icon-left ml-auto w-100">
+                          <i class="pi pi-search"></i>
+                          <input pInputText class="search-input" type="text" #search
+                            (keyup)="filterUsers(search?.value)" placeholder="{{'placeholder.searchUser'|translate}}" />
+                        </span>
+                        <ng-container *ngIf="search.value">
+                          <i (click)="clearSearchUserValue(search);collapseAssignMenu=true"
+                            class="pi pi-times text-danger cursor-pointer mx-3"></i>
+                        </ng-container>
+                      </span>
+                      <hr class="m-0">
+                    </div>
+                    <div class="p-3 assignUserMenu">
+                      <ng-container *ngFor="let item of newAssignedUsers">
+                        <li><a class="dropdown-item d-flex gap-1" (click)="itemAssignUserActionEmitter(item)">
+                            {{item?.name}}
+                          </a>
+                        </li>
+                      </ng-container>
+
+                    </div>
+                  </ul>
+                </div>
+              </ng-container>
+
+
+
+              <ng-container *ngIf="enableAddNewQuestion">
+                <div class="dropdown">
+                  <button data-bs-toggle="dropdown" aria-expanded="false" pButton
+                    label="{{'dashboard.usersList.addNewQuestion'|translate}}"
+                    class="p-button-outlined p-button-secondary clear">
+                  </button>
+                  <ul class="dropdown-menu border-0 p-3">
+                    <ng-container *ngFor="let item of newQuestionList">
+                      <li><a class="dropdown-item d-flex gap-1">
+                          {{item?.name}}
+                        </a>
+                      </li>
+                    </ng-container>
+
+                  </ul>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="enableDeleteButton">
+                <button (click)="deleteSelectedItems()" [disabled]="!selectedItems || !selectedItems?.length"
+                  class="btn btn-danger clear">{{'general.delete'|translate}}</button>
+              </ng-container>
+              <div class="d-flex flex-wrap align-items-center gap-3">
+                <ng-container *ngIf="showClear">
+                  <button pButton label="
+                  {{'general.reset'|translate}}" class="p-button-outlined p-button-secondary clear"
+                    icon="pi pi-refresh" (click)="clear(dt1)">
+                  </button>
+                </ng-container>
+                <div class="d-flex align-items-center gap-3 dropdown-arrow">
+                  <p-dropdown #dropdown [options]="rowsPerPageOptions" (onChange)="paginatorOption($event)"
+                    (onHide)="hide()"></p-dropdown>
+                </div>
+                <!-- <p-multiSelect #colVisible [(ngModel)]="selectedColumns" [options]="tableHeaders" optionLabel="header"
                 appendTo="body" selectedItemsLabel="{0} columns selected" [style]="{'min-width': '200px'}"
                 placeholder="Choose Columns" pTooltip="Column Visibility" tooltipPosition="top"></p-multiSelect>
               <a pTooltip="print" tooltipPosition="top">
@@ -130,11 +132,12 @@
               <a pTooltip="PDF" tooltipPosition="top">
                 <img src="assets/images/icons/pdf.svg" class="action-btn" alt="">
               </a> -->
-            </div>
+              </div>
 
+            </div>
           </div>
-        </div>
-      </ng-template>
+        </ng-template>
+      </ng-container>
       <ng-template pTemplate="header" let-columns>
         <tr>
           <ng-container *ngIf="showSelection">
@@ -301,7 +304,8 @@
           </ng-container>
 
           <ng-container *ngIf="showActions">
-            <th>{{"dashboard.tableHeader.actions"|translate}}</th>
+            <th style="width: 2rem;"></th>
+            <!-- <th>{{"dashboard.tableHeader.actions"|translate}}</th> -->
           </ng-container>
           <ng-container *ngIf="showReport">
             <th>{{"dashboard.tableHeader.report"|translate}}</th>
@@ -400,7 +404,14 @@
                       </ng-container>
                       <ng-template #normalRecord>
                         <span [class.truncate-text]="col?.type=='text'" *ngIf="item && item[col.field]">
-                          {{ item[col.field] }}
+                          <div class="d-flex gap-3 align-items-center">
+                            <ng-container *ngIf="col?.showImg">
+                              <img [src]="item?.image" onerror="src='assets/images/not-found/noUser.jpg'" alt="image"
+                                class="image rounded-circle">
+                            </ng-container>
+
+                            {{ item[col.field] }}
+                          </div>
                         </span>
                       </ng-template>
                     </td>
@@ -784,7 +795,42 @@
             </ng-container>
             <ng-container *ngIf="showActions">
               <td>
-                <div class="d-flex gap-2">
+                <div class="dropdown">
+                  <a class="dropdown-toggle d-flex align-items-center gap-2 text-muted-color" type="button"
+                    id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{'general.monthly'|translate}}
+                  </a>
+                  <ul class="dropdown-menu border-0 shadow-sm mt-3 p-2" aria-labelledby="dropdownMenuButton1">
+                    <ng-container *ngIf="showDetails">
+                      <li>
+                        <a class="fw-500 details" pTooltip="{{'general.details'|translate}}" tooltipPosition="top"
+                          (click)="detailsHandlerEmit(item)">
+                          <i class="far fa-eye"></i>
+                        </a>
+                      </li>
+                    </ng-container>
+
+                    <ng-container *ngIf="showEdit">
+                      <li>
+                        <a class="d-flex align-items-center
+                        gap-2" (click)="editChildHandlerEmit(item)" pTooltip="{{'general.edit'|translate}}"
+                          tooltipPosition="top">
+                          <span><i class="fas fa-pen edit"></i></span>
+                        </a>
+                      </li>
+                    </ng-container>
+                    <ng-container *ngIf="showDelete">
+                      <li>
+                        <a class="d-flex align-items-center
+                        gap-2" (click)="deleteHandlerEmit(item)" pTooltip="{{'general.delete'|translate}}"
+                          tooltipPosition="top">
+                          <span><i class="fas fa-trash-alt remove"></i></span>
+                        </a>
+                      </li>
+                    </ng-container>
+                  </ul>
+                </div>
+                <!-- <div class="d-flex gap-2">
                   <ng-container *ngIf="showDetails">
                     <a class="fw-500 details" pTooltip="{{'general.details'|translate}}" tooltipPosition="top"
                       (click)="detailsHandlerEmit(item)">
@@ -821,7 +867,7 @@
                         reset-password fs-5-1"></i></span>
                     </a>
                   </ng-container>
-                </div>
+                </div> -->
               </td>
             </ng-container>
             <ng-container *ngIf="showReport">
@@ -886,17 +932,14 @@
   </ng-template>
   </p-table>
 </div>
-<ng-container *ngIf="tableData?.length>0">
+<!-- <ng-container *ngIf="tableData?.length>0">
   <div class="d-flex justify-content-center my-3">
     <ng-container *ngIf="showPaginationText">
       <p>Showing {{pageNumber}} to {{pages}} of {{results}} results</p>
     </ng-container>
     <p-paginator #paginator [rows]="paginatorRows" [totalRecords]="results" [showPageLinks]="true" [pageLinkSize]="3"
       (onPageChange)="paginate($event)"></p-paginator>
-    <!-- <div class="d-flex align-items-center gap-3">
-      <p-dropdown #dropdown [options]="rowsPerPageOptions" (onChange)="paginatorOption($event)"
-        (onHide)="hide()"></p-dropdown>
-    </div> -->
+
   </div>
-</ng-container>
+</ng-container> -->
 </div>

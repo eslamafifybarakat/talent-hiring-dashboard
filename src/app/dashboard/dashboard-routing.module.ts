@@ -10,13 +10,15 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       {
-        path: '',
+        path: 'dashboard',
         component: HomeComponent,
         data: {
           title: 'titles.home',
           type: 'dashboard'
         }
       },
+      { path: 'candidates', loadChildren: () => import('./modules/candidates/candidates.module').then(m => m.CandidatesModule) },
+      { path: 'companies', loadChildren: () => import('./modules/companies/companies.module').then(m => m.CompaniesModule) },
       {
         path: 'welcome-dashboard',
         component: WelcomeDashboardComponent,
@@ -27,7 +29,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: 'welcome-dashboard',
+        redirectTo: 'dashboard',
         pathMatch: 'full',
       },
       { path: '**', redirectTo: 'error' }

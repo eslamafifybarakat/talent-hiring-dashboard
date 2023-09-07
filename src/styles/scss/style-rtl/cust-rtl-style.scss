@@ -126,3 +126,11 @@
     margin-left: inherit !important;
   }
 }
+.aside-menu {
+  .active {
+    &:after {
+      left: 0px !important;
+      right: inherit !important;
+    }
+  }
+}

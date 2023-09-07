@@ -1,0 +1,33 @@
+<div id="candidates" class="pt-4">
+  <div class="d-flex justify-content-between gap-2 flex-wrap">
+    <div>
+      <h4 class="fs-3 text-grey-900 fw-bold mb-1">{{'candidates.employees'|translate}}</h4>
+      <p class="text-capitalize text-grey-700 fw-500 fs-5">{{'candidates.currentEmployees'|translate}}
+      </p>
+    </div>
+    <div>
+      <app-search></app-search>
+    </div>
+    <div class="d-flex align-items-center gap-3">
+      <button class="btn add  d-flex justify-content-center align-items-center bg-main-color rounded-circle">
+        <i class="pi pi-plus fs-5 text-white-color"></i>
+      </button>
+      <app-notification></app-notification>
+      <app-user-info></app-user-info>
+      <app-language-selector></app-language-selector>
+    </div>
+  </div>
+  <div class="mt-4 global-card">
+    <h5 class="fs-5 text-muted-color fw-500 mb-1">{{'candidates.employees'|translate}} ({{usersList?.length}})</h5>
+
+    <div>
+      <app-dynamic-table [isLoading]="loadingIndicator" [showClear]="true" [showSearch]="true" [showPaginator]="true"
+        [isLoadingSearch]="isLoadingSearch" [tableHeaders]="tableHeaders" [tableData]="usersList"
+        [enableDateFormate]="true" [dateFormateString]="'EE | dd/MM/YYYY'" [showActions]="true"
+        [showActionInMenu]="true" [showEdit]="true" [showDelete]="true" [showDetails]="true" [showImg]="true"
+        [results]="usersCount" [paginatorRows]="perPage" [pages]="pagesCount" [rowsPerPageOptions]="rowsOptions"
+        [enableConfirmDeleteDialog]="true" [keyDelete]="'full_name'" [isSearch]="isSearch"
+        [arrayChildKey]="'name'"></app-dynamic-table>
+    </div>
+  </div>
+</div>
