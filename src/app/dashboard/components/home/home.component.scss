@@ -3,4 +3,24 @@
     width: 2.7rem;
     height: 2.7rem;
   }
+
+  .layer {
+    background: rgba(255, 255, 255, 0.04);
+    width: 69%;
+    height: 400px;
+    right: -40%;
+    rotate: 30deg;
+    bottom: -80%;
+  }
+  .company {
+    background-color: #f4f7fe;
+    width: 45px;
+    height: 45px;
+    .company-img {
+      width: 20px;
+    }
+  }
+  .chart .dropdown-toggle::after {
+    display: block !important;
+  }
 }

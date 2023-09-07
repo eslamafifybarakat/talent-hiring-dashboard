@@ -4,6 +4,11 @@
     "arabic": "Arabic"
   },
   "general": {
+    "weekly":"Weekly",
+    "monthly":"Monthly",
+    "yearly":"Yearly",
+    "seeAll":"See All",
+    "skip":"Skip",
     "advanced":"Advanced",
     "normal":"Normal",
     "permissions": "Permissions",
@@ -430,9 +435,21 @@
       "editPosition":"Edit Position"
     }
   },
-  "welcome": {
-    "hi": "Hi",
+  "home":{
     "welcomeBack": "Welcome to Talent Gates",
+    "hi": "Hi",
+    "totalRevenue":"Total revenue",
+    "monthlyRevenue":"Monthly revenue",
+    "weeklyRevenue":"Weekly revenue",
+    "dailyRevenue":"Daily revenue",
+    "users":"Users",
+    "newUsers":"New Users",
+    "candidates":"Candidates",
+    "companiesSubscriptions":"Companies Subscriptions",
+    "checkPlan":"Check our Default Plans",
+    "changeSubscription":"You can change the subscription plans form this panel , each plan is a 100% customisable."
+  },
+  "welcome": {
     "pageIsDesigned": "This page is designed to give some important information about the website. Let's make someting together!",
     "congratulations": "Congratulations",
     "youHavePermission": "You have permission to do more operation",

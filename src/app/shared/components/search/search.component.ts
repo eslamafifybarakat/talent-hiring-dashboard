@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-
+  isLoadingSearch: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  clearSearchValue(search: any): void {
+    search.value = '';
+  }
 }

@@ -1,75 +1,92 @@
 <div id="home">
   <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
     <div>
-      <p class="text-capitalize text-main-color">{{'welcome.hi'|translate}} <span class="px-1">{{userName}}</span>,
+      <p class="text-capitalize text-grey-700 fw-500">{{'home.hi'|translate}} <span class="px-1">{{userName}}</span>,
       </p>
-      <h2 class="fs-2 text-main-color fw-bold">{{'welcome.welcomeBack'|translate}}</h2>
+      <h2 class="fs-2 text-grey-900 fw-bold">{{'home.welcomeBack'|translate}}</h2>
     </div>
-    <app-search></app-search>
-  </div>
-  <div class="row mt-3">
-    <div class="col-lg-3 col-md-6 mb-3">
-      <div class="global-card d-flex justify-content-between align-items-center flex-wrap gap-2 h-100">
-        <div>
-          <p class="text-muted-color fw-500">Total revenue</p>
-          <p class="fs-4 fw-bold text-main-color mb-0">$12345,33</p>
-        </div>
-        <div>
-          <i class="pi pi-chart-line fs-1 text-main-color"></i>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-6 mb-3">
-      <div class="global-card d-flex justify-content-between align-items-center flex-wrap gap-2 h-100">
-        <div>
-          <p class="text-muted-color fw-500">Monthly revenue</p>
-          <p class="fs-4 fw-bold text-main-color mb-0">$12345,33</p>
-        </div>
-        <div>
-          <i class="pi pi-chart-bar fs-1 text-main-color"></i>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-6 mb-3">
-      <div class="global-card d-flex justify-content-between align-items-center flex-wrap gap-2 h-100">
-        <div>
-          <p class="text-muted-color fw-500">Weekly revenue</p>
-          <p class="fs-4 fw-bold text-main-color mb-0">$12345,33</p>
-        </div>
-        <div>
-          <i class="pi pi-chart-pie fs-1 text-main-color"></i>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-6 mb-3">
-      <div class="global-card d-flex justify-content-between align-items-center flex-wrap gap-2 h-100">
-        <div>
-          <p class="text-muted-color fw-500">Daily revenue</p>
-          <p class="fs-4 fw-bold text-main-color mb-0">$12345,33</p>
-        </div>
-        <div>
-          <i class="pi pi-chart-line fs-1 text-main-color"></i>
-        </div>
-      </div>
+    <div class="d-flex gap-3 align-items-center">
+      <app-search></app-search>
+      <app-language-selector></app-language-selector>
     </div>
   </div>
   <div class="row mt-3">
-    <div class="col-lg-8">
+    <div class="col-lg-3 col-md-6 mb-3">
+      <div class="global-card d-flex justify-content-between align-items-center flex-wrap gap-2 h-100">
+        <div>
+          <p class="text-muted-color fw-500">{{'home.totalRevenue'|translate}}</p>
+          <p class="fs-4 fw-bold dark-grey mb-0">$12345,33</p>
+        </div>
+        <div>
+          <img src="assets/images/graphs/chart1.svg" alt="graph">
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 mb-3">
+      <div class="global-card d-flex justify-content-between align-items-center flex-wrap gap-2 h-100">
+        <div>
+          <p class="text-muted-color fw-500">{{'home.monthlyRevenue'|translate}}</p>
+          <p class="fs-4 fw-bold dark-grey mb-0">$12345,33</p>
+        </div>
+        <div>
+          <img src="assets/images/graphs/chart2.svg" alt="graph">
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 mb-3">
+      <div class="global-card d-flex align-items-center flex-wrap gap-3 h-100">
+        <div>
+          <img src="assets/images/graphs/chart3.svg" alt="graph">
+        </div>
+        <div>
+          <p class="text-muted-color fw-500">{{'home.weeklyRevenue'|translate}}</p>
+          <p class="fs-4 fw-bold dark-grey mb-0">$12345,33</p>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 mb-3">
+      <div class="global-card d-flex justify-content-between align-items-center flex-wrap gap-2 h-100">
+        <div>
+          <p class="text-muted-color fw-500">{{'home.dailyRevenue'|translate}}</p>
+          <p class="fs-4 fw-bold dark-grey mb-0">$12345,33</p>
+        </div>
+        <div>
+          <img src="assets/images/graphs/chart4.svg" alt="graph">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-lg-8 mb-lg-0 mb-4">
       <div class="global-card">
-        <div class="d-flex align-items-center gap-5">
-          <h4 class="fw-bold fs-4 text-main-color">Users</h4>
-          <div>
-            <i class="fas fa-check-circle fs-5-1 text-success-color"></i>
-            <span class="text-success-color fw-500"> +6.7%</span>
+        <div class="d-flex justify-content-between">
+          <div class="d-flex align-items-center gap-5">
+            <h4 class="fw-bold fs-4 dark-grey">{{'home.users'|translate}}</h4>
+            <div>
+              <i class="fas fa-check-circle fs-5-1 text-success-color"></i>
+              <span class="text-success-color fw-500"> +6.7%</span>
+            </div>
+          </div>
+          <div class="dropdown chart">
+            <a class="dropdown-toggle d-flex align-items-center gap-2 text-muted-color" type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              {{'general.monthly'|translate}}
+            </a>
+            <ul class="dropdown-menu border-0 shadow-sm mt-3 p-2" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item">{{'general.yearly'|translate}}</a></li>
+              <li><a class="dropdown-item">{{'general.monthly'|translate}}</a></li>
+              <li><a class="dropdown-item">{{'general.weekly'|translate}}</a></li>
+            </ul>
           </div>
         </div>
         <div class="row justify-content-center mt-4">
           <div class="col-md-11">
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-6 mb-3">
                 <div class="global-card d-flex align-items-end flex-wrap gap-4 h-100">
                   <div>
-                    <p class="text-muted-color fw-500">Candidates</p>
+                    <p class="text-muted-color fw-500">{{'general.seeAll'|translate}}</p>
                     <p class="fs-4 fw-bold text-main-color mb-0">$12345,33</p>
                   </div>
                   <div>
@@ -77,10 +94,10 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 mb-3">
                 <div class="global-card d-flex align-items-end flex-wrap gap-4 h-100">
                   <div>
-                    <p class="text-muted-color fw-500">Candidates</p>
+                    <p class="text-muted-color fw-500">{{'home.candidates'|translate}}</p>
                     <p class="fs-4 fw-bold text-main-color mb-0">$12345,33</p>
                   </div>
                   <div>
@@ -91,35 +108,101 @@
             </div>
           </div>
         </div>
-        <p-chart type="line" [data]="chartData" [options]="chartOptions" [height]="'200px'"></p-chart>
+        <p-chart type="line" [data]="chartData" [options]="chartOptions" [height]="'160px'"></p-chart>
       </div>
     </div>
     <div class="col-lg-4">
-      <div class="global-card">
-        <h4 class="fw-bold fs-4 text-main-color">New Users</h4>
-        <div class="mt-4">
-          <ng-container *ngFor="let item of users;let i=index">
-            <div class="d-flex align-items-center justify-content-between gap-2">
-              <div class="d-flex align-items-center gap-3">
-                <img src="assets/images/userprofile.jpg" alt="user" class="user rounded-circle">
+      <div class="global-card h-100 d-flex flex-column justify-content-between ">
+        <div>
+          <h4 class="fw-bold fs-4 dark-grey">{{'home.newUsers'|translate}}</h4>
+          <div class="mt-4">
+            <ng-container *ngFor="let item of users;let i=index">
+              <div class="d-flex align-items-center justify-content-between gap-2">
+                <div class="d-flex align-items-center gap-3">
+                  <img src="assets/images/userprofile.jpg" alt="user" class="user rounded-circle">
+                  <div>
+                    <h6 class="mb-1 text-main-color fw-bold">Ahmed Ali</h6>
+                    <p class="text-muted-color fw-500 fs-8">Today, 12:44</p>
+                  </div>
+                </div>
+                <a>
+                  <i class="pi pi-ellipsis-v text-main-color fs-5"></i>
+                </a>
+              </div>
+              <hr class="my-2" [class.d-none]="i>users?.length-2">
+            </ng-container>
+          </div>
+        </div>
+        <div class=" mt-4">
+          <p class="d-flex justify-content-center align-items-center gap-2 fw-bold text-main-color">
+            View all <i class="pi pi-arrow-right"></i>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-lg-4 mb-lg-0 mb-4">
+      <div class="global-card h-100">
+        <div
+          class="global-card bg-main-color d-flex justify-content-between align-items-center flex-wrap gap-2 overflow-hidden position-relative">
+          <div class="position-absolute layer">
+          </div>
+          <div>
+            <p class="text-muted-color fw-500 fs-8">{{'home.companiesSubscriptions'|translate}}</p>
+            <p class="fs-4 fw-bold text-white-color mb-0">$12345,33</p>
+          </div>
+          <div class="d-flex flex-column gap-3 align-items-end">
+            <i class="pi pi-ellipsis-h fs-5 text-white-color"></i>
+            <img src="assets/images/graphs/white-graph.svg" alt="graph">
+          </div>
+        </div>
+        <div class="mt-3">
+          <h6 class="text-muted-color">Recent</h6>
+          <ng-container *ngFor="let item of companies;let i=index">
+            <div class="d-flex align-items-center justify-content-between gap-2" [class.mb-3]="i<users?.length-2">
+              <div class="d-flex align-items-center gap-2">
+                <div class="company rounded-circle d-flex justify-content-center align-items-center">
+                  <img [src]="item?.image" alt="company" class="company-img">
+                </div>
                 <div>
-                  <h6 class="mb-1 text-main-color fw-bold">Ahmed Ali</h6>
-                  <p class="text-muted-color fw-500 fs-8">Today, 12:44</p>
+                  <h6 class="mb-1 text-main-color fw-bold">{{item?.title}}</h6>
+                  <p class="text-muted-color fw-500 fs-8">{{item?.date}}</p>
                 </div>
               </div>
-              <a>
-                <i class="pi pi-ellipsis-v text-main-color fs-5"></i>
-              </a>
+              <p class="fw-bold">
+                {{item?.price}}
+              </p>
             </div>
-            <hr class="my-2" [class.d-none]="i>users?.length-2">
           </ng-container>
-          <div class=" mt-4">
-            <p class="d-flex justify-content-center align-items-center gap-2 fw-bold text-main-color">
-              View all <i class="pi pi-arrow-right"></i>
-            </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="global-card">
+        <div class="row justify-content-between">
+          <div class="col-lg-6 p-4">
+            <div class="d-flex flex-column justify-content-between h-100">
+              <div>
+                <h1 class="fw-bold w-75 w-md-100 dark-grey">
+                  {{'home.checkPlan'|translate}}
+                </h1>
+                <p class="text-muted-color mt-4 w-75 w-md-100">
+                  {{'home.changeSubscription'|translate}}
+                </p>
+              </div>
+              <div class="d-flex gap-4 align-items-center mt-3">
+                <button class="btn btn-solid-main rounded-pill">{{'general.seeAll'|translate}}</button>
+                <a class="text-muted-color">{{'general.skip'|translate}}</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <img src="assets/images/check-plan.svg" alt="check-plan" class="w-100">
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </div>

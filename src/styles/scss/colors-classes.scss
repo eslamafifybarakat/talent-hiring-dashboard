@@ -3,7 +3,7 @@
 }
 
 .bg-main-color {
-  background-color: var(--bg-main-color);
+  background-color: var(--bg-main-color) !important;
 }
 
 .text-second-color {
@@ -51,10 +51,15 @@
 .text-success-color {
   color: var(--text-success-color) !important;
 }
+.dark-grey {
+  color: var(--dark-grey);
+}
 .bg-grey-900 {
   background-color: var(--grey-900);
 }
-
+.text-grey-900 {
+  color: var(--grey-900);
+}
 .text-grey-700 {
   color: var(--grey-700) !important;
 }
